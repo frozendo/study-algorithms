@@ -18,8 +18,10 @@ public class InsertionSort {
         System.out.println("Best case result = " + Arrays.equals(bestCaseExpectedResult, bestCaseResult));
 
         int[] worstCase = {90,80,70,60,50,40,30,20,10};
+        execute.insertionSortReversed(worstCase);
         int[] worstCaseExpectedResult = {10,20,30,40,50,60,70,80, 90};
         int[] worstCaseResult = execute.insertionSort(worstCase);
+
 
         System.out.println("Worst case result = " + Arrays.equals(worstCaseExpectedResult, worstCaseResult));
     }
@@ -33,6 +35,19 @@ public class InsertionSort {
                 j--;
             }
             array[j + 1]  = key;
+        }
+        return array;
+    }
+
+    private int[] insertionSortReversed(int[] array) {
+        for (int i = array.length - 1; i >= 0; i--) {
+            int key = array[i];
+            int j = i + 1;
+            while (j < array.length && array[j] < key) {
+                array[j - 1] = array[j];
+                j++;
+            }
+            array[j - 1]  = key;
         }
         return array;
     }
